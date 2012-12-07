@@ -21,6 +21,7 @@ class MineControlManager extends BaseManager
     public function start()
     {
         if (!$this->isRunning()) {
+            // TODO build start command dynamically
             $this->process->setCommandLine('java -jar -Xms512M -Xmx1G minecraft_server.jar');
             $this->process->run();
             if (!$this->process->isSuccessful()) {
