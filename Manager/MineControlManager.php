@@ -3,11 +3,12 @@ use MultiServerControl\CoreBundle\Manager\BaseManager;
 use Symfony\Component\Process\Process;
 
 /**
- * Created by JetBrains PhpStorm.
- * User: fabian
- * Date: 12/7/12
- * Time: 10:04 PM
- * To change this template use File | Settings | File Templates.
+ * File: MineControlManager.php
+ * Date: 12/8/12
+ *
+ * (c) Fabian Frick <fabi.kcirf@gmail.com>
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 class MineControlManager extends BaseManager
 {
