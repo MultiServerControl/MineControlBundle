@@ -3,17 +3,24 @@
 namespace MultiServerControl\MineControlBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use MultiServerControl\MineControlBundle\Manager\MineControlManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\Process\Process;
+
 
 class DefaultController extends Controller
 {
     /**
-     * @Route("/hello/{name}")
+     * @Route("/minecraft/{command}")
      * @Template()
      */
-    public function indexAction($name)
+    public function indexAction($command)
     {
-        return array('name' => $name);
+
+
+        $mineControlManager = new MineControlManager();
+        $mineControlManager->start();
+        return array('name' => $command);
     }
 }

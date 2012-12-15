@@ -1,4 +1,6 @@
 <?php
+namespace MultiServerControl\MineControlBundle\Manager;
+
 use MultiServerControl\CoreBundle\Manager\BaseManager;
 use Symfony\Component\Process\Process;
 
@@ -14,24 +16,13 @@ class MineControlManager extends BaseManager
 {
     protected $process;
 
-    public function __construct()
-    {
-        $this->process = new Process();
-    }
-
     public function start()
     {
-        if (!$this->isRunning()) {
-            // TODO build start command dynamically
-            $this->process->setCommandLine('java -jar -Xms512M -Xmx1G minecraft_server.jar');
-            $this->process->run();
-            if (!$this->process->isSuccessful()) {
-                throw new \RuntimeException($this->process->getErrorOutput());
-            }
-
-            print $this->process->getOutput();
-            print $this->process->getErrorOutput();
-        } else throw new \RuntimeException("This server instance is already running.");
+        $process = new Process('php ../app/console minecraft:start &');
+        $process->run();
+        if (!$process->isSuccessful()) {
+            throw new \RuntimeException($process->getErrorOutput());
+        }
     }
 
     public function stop()
